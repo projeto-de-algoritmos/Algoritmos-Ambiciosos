@@ -55,7 +55,7 @@ Tabela de ferramentas necessárias para rodar o projeto, com as versões recomen
 #### Clone o repositório
 
 ```bash 
-$ git clone https://github.com/projeto-de-algoritmos/Grafos3.git
+$ git clone https://github.com/projeto-de-algoritmos/Algoritmos-Ambiciosos.git
 ```
 
 #### Instale as dependências do projeto
