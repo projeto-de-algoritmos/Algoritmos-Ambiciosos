@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Mission Coordinator</title>
+</head>
+<body>
+    <h1>Space Mission Coordinator</h1>
+    
+    <div id="messageContainer">
+        <!-- Container para exibir mensagens -->
+    </div>
+
+    <h2>Dados do Launch Planner</h2>
+    <label for="launchName">Nome da Missão:</label>
+    <input type="text" id="launchName" placeholder="Nome da Missão">
+
+    <label for="launchTime">Data de Lançamento:</label>
+    <input type="text" id="launchTime" placeholder="Data de Lançamento">
+
+    <button id="loadDataButton">Carregar Dados</button>
+
+    <script>
+        const messageContainer = document.getElementById('messageContainer');
+        const loadDataButton = document.getElementById('loadDataButton');
+
+        // Função para adicionar mensagens ao container
+        function addMessage(message) {
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            messageContainer.appendChild(messageElement);
+        }
+
+        // Event listener para o botão de carregar dados
+        loadDataButton.addEventListener('click', () => {
+            // Coletar dados inseridos pelo usuário
+            const launchName = document.getElementById('launchName').value;
+            const launchTime = document.getElementById('launchTime').value;
+
+            // Adicionar mensagens enquanto carrega dados
+            addMessage(`Carregando dados do Launch Planner para ${launchName}...`);
+            // Chame a função para carregar os dados e passe as informações coletadas
+            loadLaunchPlannerData(launchName, launchTime);
+
+            // Repita o processo para as outras classes
+            // ...
+
+        });
+    </script>
+</body>
+</html>
