@@ -1,7 +1,7 @@
 const ResourceManagement = require('./resourceManagement');
 const OrbitScheduler = require('./orbitScheduler');
 const MissionTrajectory = require('./missionTrajectory');
-const LaunchPlanner = require('./LaunchPlanner');
+const LaunchPlanner = require('./launchPlanner');
 
 class SpaceMissionCoordinator {
   constructor() {
