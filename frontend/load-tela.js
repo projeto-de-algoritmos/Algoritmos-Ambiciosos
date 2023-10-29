@@ -40,3 +40,61 @@ function loadResourceManagementData() {
     // Agora, atualize os dados no backend.
     coordinator.resourceManagement.updateResourceManagementData(resourceManagementData);
 }
+
+// missionDataLoader.js
+
+// Função para carregar dados de missão com base nas informações já carregadas.
+function getMissionData(
+    launchPlannerData,
+    missionTrajectoryData,
+    orbitSchedulerData,
+    resourceManagementData
+  ) {
+    try {
+      // Aqui, você pode combinar as informações de todos os módulos relevantes para criar os dados de missão.
+      // Certifique-se de que os dados sejam formatados adequadamente para atender às necessidades do seu código.
+  
+      const missionData = [];
+      for (let i = 0; i < launchPlannerData.length; i++) {
+        const launchData = launchPlannerData[i];
+        const trajectoryData = missionTrajectoryData[i];
+        const orbitData = orbitSchedulerData[i];
+        const resourceData = resourceManagementData[i];
+  
+        // Calcule os dados da missão com base nas informações dos módulos.
+        const mission = {
+          name: `Mission ${String.fromCharCode(65 + i)}`,
+          launchTime: launchData.launchTime,
+          orbitRadius: orbitData.orbitRadius,
+          angularSpeed: orbitData.angularSpeed,
+          initialEnergy: resourceData.initialEnergy,
+        };
+  
+        missionData.push(mission);
+      }
+  
+      return missionData;
+    } catch (error) {
+      console.error("Erro ao carregar informações das missões: ", error);
+      return []; // Retornar um array vazio em caso de erro.
+    }
+  }
+  
+
+async function loadMissionData() {
+    try {
+      const missionData = await getMissionData(); // Use a função para obter os dados reais.
+      coordinator.planAndScheduleMissions(missionData);
+      coordinator.scheduleMissionsToMinimizeLateness();
+    } catch (error) {
+      console.error("Erro ao carregar informações das missões: ", error);
+    }
+  }
+
+// Chame as funções para carregar os dados
+loadLaunchPlannerData();
+loadMissionTrajectoryData();
+loadOrbitSchedulerData();
+loadResourceManagementData();
+// Chame a função para carregar e agendar as missões com base nos dados reais.
+loadMissionData();

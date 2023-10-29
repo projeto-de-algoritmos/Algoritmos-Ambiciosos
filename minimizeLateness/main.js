@@ -80,11 +80,11 @@ class SpaceMissionCoordinator {
     }
   }
 
-const missionData = [
-  { name: 'Mission A', launchTime: '2023-11-01', orbitRadius: 100, angularSpeed: (2 * Math.PI) / 200, initialEnergy: 200 },
-  { name: 'Mission B', launchTime: '2023-11-15', orbitRadius: 120, angularSpeed: (2 * Math.PI) / 150, initialEnergy: 180 },
-  { name: 'Mission C', launchTime: '2023-11-05', orbitRadius: 110, angularSpeed: (2 * Math.PI) / 220, initialEnergy: 210 },
-];
+// const missionData = [
+//   { name: 'Mission A', launchTime: '2023-11-01', orbitRadius: 100, angularSpeed: (2 * Math.PI) / 200, initialEnergy: 200 },
+//   { name: 'Mission B', launchTime: '2023-11-15', orbitRadius: 120, angularSpeed: (2 * Math.PI) / 150, initialEnergy: 180 },
+//   { name: 'Mission C', launchTime: '2023-11-05', orbitRadius: 110, angularSpeed: (2 * Math.PI) / 220, initialEnergy: 210 },
+// ];
 
 const coordinator = new SpaceMissionCoordinator();
 coordinator.planAndScheduleMissions(missionData);
