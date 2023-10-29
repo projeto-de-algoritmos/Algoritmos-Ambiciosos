@@ -41,47 +41,44 @@ class SpaceMissionCoordinator {
     return timeDiff < 0 ? 0 : timeDiff;
   }
 
-  // Função para simular e otimizar missões usando o algoritmo de Minimize Lateness
-  simulateAndOptimizeMissions() {
-    console.log('Simulação e Otimização de Missões:');
-
-    // Ordenar missões por data de lançamento
-    const sortedMissions = this.missionTrajectories.slice().sort((a, b) => {
-      return new Date(a.launchTime) - new Date(b.launchTime);
-    });
-
-    let currentTime = new Date(); // Iniciar no tempo atual
-    let totalLateness = 0;
-
-    for (let i = 0; i < sortedMissions.length; i++) {
-      const mission = sortedMissions[i];
-      const resourceManager = this.resourceManagers[i];
-
-      // Calcular o atraso da missão
-      const lateness = this.calculateLateness(mission, currentTime);
-
-      // Calcular recursos necessários (isso é apenas um exemplo, ajuste de acordo com os requisitos)
-      const energyNeeded = lateness > 0 ? lateness * 10 : 0;
-
-      // Verificar se há recursos disponíveis
-      if (resourceManager.energy >= energyNeeded) {
-        // Recursos disponíveis, simular a missão no tempo esperado
-        currentTime = new Date(mission.launchTime);
-        totalLateness += lateness;
-        console.log(`Missão ${mission.name} realizada em ${currentTime}`);
-        resourceManager.consumeEnergy(energyNeeded);
-      } else {
-        // Não há recursos suficientes, atrasar a missão
-        currentTime = new Date(currentTime.getTime() + energyNeeded * 10);
-        totalLateness += this.calculateLateness(mission, currentTime);
-        console.log(`Missão ${mission.name} atrasada para ${currentTime}`);
-        resourceManager.consumeEnergy(energyNeeded);
+    // Função para agendar missões com base no algoritmo "Scheduling to Minimize Lateness"
+    scheduleMissionsToMinimizeLateness() {
+      const result = {
+        messages: [],  // Array para armazenar mensagens sobre cada missão
+        totalLateness: 0  // Variável para o atraso total acumulado
+      };
+  
+      // Ordenar missões por data de lançamento
+      const sortedMissions = this.missionTrajectories.slice().sort((a, b) => {
+        return new Date(a.launchTime) - new Date(b.launchTime);
+      });
+  
+      let currentTime = new Date(); // Iniciar no tempo atual
+  
+      for (let i = 0; i < sortedMissions.length; i++) {
+        const mission = sortedMissions[i];
+        const resourceManager = this.resourceManagers[i];
+  
+        // Calcular o atraso da missão usando a função calculateLateness
+        const lateness = this.calculateLateness(mission, currentTime);
+  
+        // Verificar se há recursos disponíveis
+        if (resourceManager.energy >= lateness) {
+          // Recursos disponíveis, missão realizada no tempo esperado
+          result.messages.push(`Missão ${mission.name} realizada no tempo esperado`);
+        } else {
+          // Não há recursos suficientes, atrasar a missão
+          result.messages.push(`Missão ${mission.name} atrasada`);
+        }
+  
+        // Atualizar o tempo atual
+        currentTime = new Date(currentTime.getTime() + lateness);
+  
+        // Adicionar o atraso ao total
+        result.totalLateness += lateness;
       }
     }
-
-    console.log(`Atraso total: ${totalLateness} milissegundos`);
   }
-}
 
 const missionData = [
   { name: 'Mission A', launchTime: '2023-11-01', orbitRadius: 100, angularSpeed: (2 * Math.PI) / 200, initialEnergy: 200 },
@@ -91,4 +88,4 @@ const missionData = [
 
 const coordinator = new SpaceMissionCoordinator();
 coordinator.planAndScheduleMissions(missionData);
-coordinator.simulateAndOptimizeMissions();
+coordinator.scheduleMissionsToMinimizeLateness(); // Chame a função de agendamento de missões para minimizar a latência

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Mission Coordinator</title>
+    <link rel="stylesheet" type="text/css" href="App.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Space Mission Coordinator</h1>
+    
+    <div id="messageContainer">
+        <!-- Container para exibir mensagens -->
+    </div>
+    
+    <!-- Trajetória da Missão -->
+
+    <h2>Cálculo de Trajetória da Missão</h2>
+    <form id="trajectoryForm">
+        <label for="spacecraftName">Nome da Espaçonave:</label>
+        <input type="text" id="spacecraftName" placeholder="Nome da Espaçonave" required>
+    
+        <label for="startX">Coordenada X Inicial:</label>
+        <input type="number" id="startX" placeholder="Coordenada X" step="0.0000000000000000000001" required>
+    
+        <label for="startY">Coordenada Y Inicial:</label>
+        <input type="number" id="startY" placeholder="Coordenada Y" step="0.0000000000000000000001" required>
+    
+        <button type="submit">Calcular Trajetória</button>
+    </form>
+
+    <h3>Trajetórias Calculadas</h3>
+    <ul id="calculatedTrajectories"></ul>
+    <script>
+        const trajectoryForm = document.getElementById('trajectoryForm');
+        const calculatedTrajectoriesList = document.getElementById('calculatedTrajectories');
+
+        // Event listener para o formulário de cálculo de trajetória
+        trajectoryForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const spacecraftName = document.getElementById('spacecraftName').value;
+            const startX = parseFloat(document.getElementById('startX').value);
+            const startY = parseFloat(document.getElementById('startY').value);
+
+            // Chame a função para calcular a trajetória e passe as informações coletadas
+            calculateTrajectory(spacecraftName, startX, startY);
+
+            // Limpe o formulário após o cálculo
+            trajectoryForm.reset();
+        });
+
+        // Função para adicionar uma trajetória calculada à lista
+        function addCalculatedTrajectory(spacecraftName, coordinates) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Espaçonave: ${spacecraftName} - Trajetória: ${JSON.stringify(coordinates)}`;
+            calculatedTrajectoriesList.appendChild(listItem);
+        }
+
+        // Função para calcular uma trajetória
+        function calculateTrajectory(spacecraftName, startX, startY) {
+            // Implemente o cálculo da trajetória aqui (por exemplo, caminho predefinido)
+            // Simplesmente adicione coordenadas para este exemplo
+            const coordinates = [];
+            coordinates.push({ x: startX, y: startY });
+            coordinates.push({ x: startX + 10, y: startY + 10 });
+            coordinates.push({ x: startX + 20, y: startY + 20 });
+
+            // Adicione a trajetória calculada à lista
+            addCalculatedTrajectory(spacecraftName, coordinates);
+
+            // Exiba uma mensagem informando o cálculo da trajetória
+            addMessage(`Trajetória calculada para ${spacecraftName}.`);
+        }
+    </script>
+
+    <a href="index.html" class="button-return">Retornar ao Menu Principal</a>
+</body>
+</html>

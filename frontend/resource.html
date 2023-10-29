@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Mission Coordinator</title>
+    <link rel="stylesheet" type="text/css" href="App.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Space Mission Coordinator</h1>
+    
+    <div id="messageContainer">
+        <!-- Container para exibir mensagens -->
+    </div>
+    
+    <!-- Gestão de Recursos e Energia -->
+
+    <h2>Gestão de Recursos e Energia</h2>
+    <form id="resourceForm">
+        <label for="spacecraftName">Nome da Espaçonave:</label>
+        <input type="text" id="spacecraftName" placeholder="Nome da Espaçonave" required>
+    
+        <label for="initialEnergy">Energia Inicial:</label>
+        <input type="number" id="initialEnergy" placeholder="Energia Inicial" required>
+    
+        <button type="submit">Gerenciar Recursos</button>
+    </form>
+
+    <h3>Recursos e Energia</h3>
+    <div id="resourceInfo"></div>
+    <script>
+        const ResourceManagement = require('./resourceManagement');
+        const resourceForm = document.getElementById('resourceForm');
+        const resourceInfo = document.getElementById('resourceInfo');
+        
+        let resourceManager = null;
+
+        // Event listener para o formulário de gerenciamento de recursos
+        resourceForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const spacecraftName = document.getElementById('spacecraftName').value;
+            const initialEnergy = parseFloat(document.getElementById('initialEnergy').value);
+
+            // Crie uma instância do gerenciador de recursos
+            resourceManager = new ResourceManagement(spacecraftName, initialEnergy);
+
+            // Exiba informações sobre recursos e energia
+            displayResourceInfo();
+
+            // Limpe o formulário após a inicialização
+            resourceForm.reset();
+        });
+
+        // Função para exibir informações sobre recursos e energia
+        function displayResourceInfo() {
+            if (resourceManager) {
+                resourceInfo.innerHTML = `
+                <p>Espaçonave: ${resourceManager.spacecraftName}</p>
+                <p>Energia Atual: ${resourceManager.energy}</p>
+            `;
+            }
+        }
+
+        // Função para consumir energia
+        function consumeEnergy() {
+            if (resourceManager) {
+                const energyToConsume = 10; // Altere o valor conforme necessário
+                resourceManager.consumeEnergy(energyToConsume);
+
+                // Exiba informações atualizadas
+                displayResourceInfo();
+            }
+        }
+
+        // Função para recarregar energia
+        function rechargeEnergy() {
+            if (resourceManager) {
+                const energyToRecharge = 20; // Altere o valor conforme necessário
+                resourceManager.rechargeEnergy(energyToRecharge);
+
+                // Exiba informações atualizadas
+                displayResourceInfo();
+            }
+        }
+
+    </script>
+
+    <a href="index.html" class="button-return">Retornar ao Menu Principal</a>
+</body>
+</html>

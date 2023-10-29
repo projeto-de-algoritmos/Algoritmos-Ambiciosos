@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Mission Coordinator</title>
+    <link rel="stylesheet" type="text/css" href="App.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Space Mission Coordinator</h1>
+    
+    <div id="messageContainer">
+        <!-- Container para exibir mensagens -->
+    </div>
+    
+    <!-- Planejamento de Lançamento -->
+
+    <h2>Planejamento de Lançamento</h2>
+    <form id="launchForm">
+        <label for="launchName">Nome da Missão:</label>
+        <input type="text" id="launchName" placeholder="Nome da Missão" required>
+    
+        <label for="launchTime">Data de Lançamento:</label>
+        <input type="datetime-local" id="launchTime" required>
+    
+        <button type="submit">Agendar Lançamento</button>
+    </form>
+
+    <h3>Lançamentos Agendados</h3>
+    <ul id="scheduledLaunches"></ul>
+    <script>
+        const launchForm = document.getElementById('launchForm');
+        const scheduledLaunchesList = document.getElementById('scheduledLaunches');
+
+        // Event listener para o formulário de planejamento de lançamento
+        launchForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const launchName = document.getElementById('launchName').value;
+            const launchTime = document.getElementById('launchTime').value;
+
+            // Chame a função para agendar o lançamento e passe as informações coletadas
+            scheduleLaunch(launchName, launchTime);
+
+            // Limpe o formulário após o agendamento
+            launchForm.reset();
+        });
+
+        // Função para adicionar um lançamento agendado à lista
+        function addScheduledLaunch(name, launchTime) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Missão: ${name} - Data de Lançamento: ${new Date(launchTime).toLocaleString()}`;
+            scheduledLaunchesList.appendChild(listItem);
+        }
+
+        // Função para agendar um lançamento
+        function scheduleLaunch(name, launchTime) {
+            // Simule condições climáticas (chuva aleatória)
+            const isRainy = Math.random() < 0.3; // 30% de chance de chuva
+
+            // Adicione o lançamento agendado à lista
+            addScheduledLaunch(name, launchTime);
+
+            // Exiba uma mensagem sobre as condições climáticas
+            const message = isRainy ? 'Atenção: Possibilidade de chuva no momento do lançamento.' : 'Condições ideais para lançamento.';
+            addMessage(`Lançamento agendado para ${name} em ${new Date(launchTime).toLocaleString()}. ${message}`);
+        }
+    </script>
+
+    <a href="index.html" class="button-return">Retornar ao Menu Principal</a>
+</body>
+</html>

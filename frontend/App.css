@@ -44,3 +44,19 @@ h1 {
   color: #ffffff; 
   text-align: center;
 }
+
+/* Estilo para os botões de retorno */
+a.button-return {
+  background-color: white; /* Cor de fundo branca */
+  color: black; /* Cor do texto preta */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  text-decoration: none; /* Remover sublinhado do link */
+  border: 1px solid black; /* Borda preta */
+  border-radius: 5px; /* Cantos arredondados */
+  display: inline-block;
+}
+
+a.button-return:hover {
+  background-color: black; /* Cor de fundo preta ao passar o mouse */
+  color: white; /* Cor do texto branca ao passar o mouse */
+}
