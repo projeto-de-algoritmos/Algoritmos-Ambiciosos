@@ -51,7 +51,30 @@ h2 {
   width: 20%;
   height: 300%;
   margin-left: 38.5%;
+  border-radius: 25px;
+  font-family: 'Share Tech Mono', sans-serif;
+  font-weight: bold ;
+  color: azure;
+  background: linear-gradient(to left, #111652, #42a3de);
+  cursor: pointer; /* Transforme o cursor em uma mão ao passar o mouse sobre o botão */
+  animation: gradientChange 2s;
+  
 }
+
+button:hover {
+  background: linear-gradient(to left, #42a3de, #111652); /* Altere o gradiente quando o cursor passar */
+  animation: none;
+
+}
+
+@keyframes gradientChange {
+  0% {
+    background: linear-gradient(to left, #111652, #42a3de); 
+  }
+  100% {
+    background: linear-gradient(to left, #42a3de, #111652);
+  }
+  }
 /* 
 #launchResourceData {
 background-color: black;
