@@ -34,9 +34,16 @@ class LaunchPlanner {
   // Exemplo de uso da classe LaunchPlanner
   const planner = new LaunchPlanner();
   
-  planner.scheduleLaunch('Foguete A');
-  planner.scheduleLaunch('Foguete B');
-  planner.scheduleLaunch('Foguete C');
+  planner.scheduleLaunch('Foguete Millennium Risonauta');
+  planner.scheduleLaunch('Foguete Comediante da Força');
+  planner.scheduleLaunch('Foguete Riso do Império');
+  planner.scheduleLaunch('Foguete C3-PO (Comediante de 3 Planetas Orbitais)');
+  planner.scheduleLaunch('Foguete Wookie Risonauta');
+  planner.scheduleLaunch('Foguete Sorriso Sith');
+  planner.scheduleLaunch('Foguete Rebelde Divertido');
+  planner.scheduleLaunch('Foguete Riso na Estrela da Morte');
+  planner.scheduleLaunch('Foguete Jedi da Comédia');
+  planner.scheduleLaunch('Foguete Humor na Galáxia');
   
   planner.listScheduledLaunches();
   

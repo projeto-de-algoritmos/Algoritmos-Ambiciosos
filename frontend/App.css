@@ -44,7 +44,9 @@ h1 {
   color: #ffffff; 
   text-align: center;
 }
-
+div.resultsContainer{
+  background-color: black;
+}
 /* Estilo para os botões de retorno */
 a.button-return {
   background-color: white; /* Cor de fundo branca */

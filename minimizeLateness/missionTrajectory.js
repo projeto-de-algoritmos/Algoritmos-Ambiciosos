@@ -33,7 +33,14 @@ class MissionTrajectory {
   spacecraft2.addCoordinate(24, 8);
   spacecraft2.addCoordinate(36, 18);
   
-  spacecraft1.listTrajectory();
-  spacecraft2.listTrajectory();
+  const spacecraft3 = new MissionTrajectory('Rover C', 2, 2);
+  spacecraft3.addCoordinate(8, 8);
+  spacecraft3.addCoordinate(16, 4);
+  spacecraft3.addCoordinate(24, 12);
+  
+  const spacecraft4 = new MissionTrajectory('Orbitador D', 15, 10);
+  spacecraft4.addCoordinate(25, 15);
+  spacecraft4.addCoordinate(35, 20);
+  spacecraft4.addCoordinate(45, 25);
   
   module.exports = MissionTrajectory;

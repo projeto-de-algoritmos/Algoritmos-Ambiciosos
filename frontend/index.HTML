@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Space Mission Coordinator - Menu</title>
-    <link rel="stylesheet" type="text/css" href="App.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h1>Space Mission Coordinator - Menu</h1>
-
-    <!-- Menu de Acesso -->
-    <ul>
-        <li><a href="launch.html" class="button-return">Planejamento de Lançamento</a></li>
-        <br/>
-        <li><a href="trajectory.html" class="button-return">Trajetória da Missão</a></li>
-        <br/>
-        <li><a href="orbit.html" class="button-return">Agendamento de Órbitas</a></li>
-        <br/>
-        <li><a href="resource.html" class="button-return">Gestão de Recursos e Energia</a></li>
-    </ul>
-</body>
-</html>
+<form id="missionForm">
+    <!-- Campos do formulário -->
+    <label for="name">Nome da Missão:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="launchTime">Data de Lançamento:</label>
+    <input type="date" id="launchTime" name="launchTime" required><br><br>
+    <label for="orbitRadius">Raio da Órbita:</label>
+    <input type="number" id="orbitRadius" name="orbitRadius" required><br><br>
+    <label for="angularSpeed">Velocidade Angular:</label>
+    <input type="number" id="angularSpeed" name="angularSpeed" required><br><br>
+    <label for="initialEnergy">Energia Inicial:</label>
+    <input type="number" id="initialEnergy" name="initialEnergy" required><br><br>
+    <button type="submit">Enviar Missão</button>
+  </form>

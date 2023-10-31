@@ -22,13 +22,19 @@ class ResourceManagement {
   }
   
   // Exemplo de uso da classe ResourceManagement
-  const spacecraftA = new ResourceManagement('Nave A', 100);
-  const spacecraftB = new ResourceManagement('Sonda B', 50);
+  const spacecraftA = new ResourceManagement('Satélite A', 250);
+  const spacecraftB = new ResourceManagement('Sonda B', 120);
+  const spacecraftC = new ResourceManagement('Rover C', 180);
+  const spacecraftD = new ResourceManagement('Orbitador D', 260);
   
   console.log('Simulação de Gestão de Recursos e Energia:');
   spacecraftA.consumeEnergy(20);
   spacecraftB.consumeEnergy(30);
   spacecraftA.rechargeEnergy(50);
   spacecraftB.consumeEnergy(40);
+  spacecraftC.consumeEnergy(25);
+  spacecraftD.rechargeEnergy(30);
+  spacecraftC.consumeEnergy(35);
+  spacecraftD.consumeEnergy(40);
   
   module.exports = ResourceManagement;
