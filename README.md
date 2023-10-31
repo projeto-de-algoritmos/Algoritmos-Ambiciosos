@@ -13,28 +13,21 @@
 
 <p> Descrição do projeto </p>
 
-O objetivo deste projeto é criar uma simulação básica de agendamento de missões espaciais, onde os universitários podem aprender os conceitos de agendamento e otimização, bem como experimentar com diferentes abordagens.
+O objetivo deste projeto é criar uma simulação básica contendo, de forma aleatória, o agendamento de missões espaciais, onde os universitários podem aprender os conceitos de agendamento e otimização. O algoritmo de "Scheduling to Minimize Lateness" (Agendamento para Minimizar Atrasos) tem o intuito de otimizar o agendamento das missões espaciais, incluindo lançamentos, trajetórias e operações em órbita, com o objetivo de minimizar os atrasos nas missões.
 
-Contendo: 
+Como ele é útil no contexto de missões espaciais?*
 
-1. Planejamento de Lançamento:
+1. *Minimização de Atrasos:* O objetivo principal é minimizar os atrasos nas missões espaciais. Quando várias missões estão programadas, é importante garantir que elas ocorram no tempo planejado. Atrasos podem ter impactos significativos, como colisões em órbita ou falhas na execução da missão.
 
-  Criar um sistema simples para agendar lançamentos de "foguetes" em datas e horários aleatórios, simulando diferentes condições climáticas.
-  
-2. Trajetória da Missão:
+2. *Agendamento Eficiente de Recursos:* O agendamento envolve a alocação eficiente de recursos, como foguetes, satélites e estações terrestres. Isso significa garantir que os recursos necessários estejam disponíveis quando as missões começarem.
 
-  Calcular trajetórias simples para as "espaçonaves", como satélites, que seguem caminhos predefinidos em um ambiente simulado.
-
-3. Agendamento de Órbitas:
-
-  Criar uma simulação onde as "espaçonaves" orbitam ao redor de um "planeta" e devem agendar suas passagens sobre áreas de interesse, evitando colisões com outros objetos.
-
-4. Gestão de Recursos e Energia:
-
-  Um sistema de gestão de recursos, onde as "espaçonaves" têm suprimentos limitados e devem gerenciá-los de forma eficiente.
+3. *Minimização de Riscos:* A minimização de atrasos ajuda a reduzir riscos. Por exemplo, a execução de uma missão antes ou depois do tempo planejado pode aumentar o risco de problemas climáticos ou de colisões com outros objetos em órbita.
 
 
 ### Interface: 
+
+![image](https://github.com/projeto-de-algoritmos/Algoritmos-Ambiciosos/assets/54143767/4b731efd-48e2-4344-82df-5361e56a8106)
+
 
 ## ➿ Execução do Projeto
 
@@ -47,8 +40,6 @@ Tabela de ferramentas necessárias para rodar o projeto, com as versões recomen
 | Node.Js | 18.16.0 | [Baixar instalador](https://nodejs.org/) |
 | Git | 2.40.1.windows.1 | [Baixar instalador](https://git-scm.com/) |
 | Javascript | - | Acompanhado do node |
-| React | ^18.2.0 | npm install react react-dom |
-
 
 ### 🔂 Executando o Projeto
 
@@ -58,20 +49,20 @@ Tabela de ferramentas necessárias para rodar o projeto, com as versões recomen
 $ git clone https://github.com/projeto-de-algoritmos/Algoritmos-Ambiciosos.git
 ```
 
-#### Instale as dependências do projeto
-
-```bash 
-$ npm i
-```
-
 #### Entre no caminho da pasta
 
 ```bash
-$ cd .\
+$ cd .\Algoritmos-Ambiciosos\minimizeLateness 
+```
+
+#### Execute o projeto 
+
+```bash 
+$ node main.js
 ```
 
 ## ✔️ Utilização do projeto
-Para utilização do projeo acesse a página localmente.
+Para utilização do projeo, rode-o no seu terminal.
 
 ## 🔗 Apresentação
 
