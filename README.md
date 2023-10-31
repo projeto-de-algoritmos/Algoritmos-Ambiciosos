@@ -26,7 +26,7 @@ Como ele é útil no contexto de missões espaciais?*
 
 ### Interface: 
 
-![image](https://github.com/projeto-de-algoritmos/Algoritmos-Ambiciosos/assets/54143767/d580e558-b33b-4a40-9303-736a29b44754)
+![image](https://github.com/projeto-de-algoritmos/Algoritmos-Ambiciosos/assets/54143767/4b731efd-48e2-4344-82df-5361e56a8106)
 
 
 ## ➿ Execução do Projeto
