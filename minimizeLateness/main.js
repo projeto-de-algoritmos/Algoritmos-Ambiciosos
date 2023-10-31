@@ -12,8 +12,8 @@ class SpaceMissionCoordinator {
   }
 
   // Função para planejar e agendar missões
-  planAndScheduleMissions(missionData) {
-    missionData.forEach((mission) => {
+  planAndScheduleMissions(missionDataRandom) {
+    missionDataRandom.forEach((mission) => {
       const { name, orbitRadius, angularSpeed, initialEnergy, launchDateTime  } = mission;
 
       // Agendar o lançamento com base nas informações da missão
@@ -63,7 +63,7 @@ class SpaceMissionCoordinator {
       const resourceManager = this.resourceManagers.find((manager) => manager.name === mission.name);
   
       // Calcular o atraso da missão usando a função calculateLateness
-      const matchingMissionData = missionData.find((data) => data.name === mission.spacecraftName);
+      const matchingMissionData = missionDataRandom.find((data) => data.name === mission.spacecraftName);
       const lateness = this.calculateLateness(
         {
           name: mission.name,
@@ -91,21 +91,41 @@ class SpaceMissionCoordinator {
     }
     return result;
   }
+
+  getRandomMissionData() {
+    const getRandomLaunchDateTime = () => {
+      const year = 2023;
+      const month = 10; // Outubro
+      const day = Math.floor(Math.random() * 2) + 30; // 30 ou 31
+      const hours = Math.floor(Math.random() * 24);
+      const minutes = Math.floor(Math.random() * 60);
+      const seconds = Math.floor(Math.random() * 60);
+  
+      return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    };
+  
+    const getRandomOrbitRadius = () => Math.floor(Math.random() * 100) + 100;
+    const getRandomAngularSpeed = () => (2 * Math.PI) / (Math.floor(Math.random() * 100) + 100);
+    const getRandomInitialEnergy = () => Math.floor(Math.random() * 150) + 100;
+  
+    const missionData = [
+      { name: 'Satélite A', launchDateTime: getRandomLaunchDateTime(), orbitRadius: getRandomOrbitRadius(), angularSpeed: getRandomAngularSpeed(), initialEnergy: getRandomInitialEnergy() },
+      { name: 'Sonda B', launchDateTime: getRandomLaunchDateTime(), orbitRadius: getRandomOrbitRadius(), angularSpeed: getRandomAngularSpeed(), initialEnergy: getRandomInitialEnergy() },
+      { name: 'Rover C', launchDateTime: getRandomLaunchDateTime(), orbitRadius: getRandomOrbitRadius(), angularSpeed: getRandomAngularSpeed(), initialEnergy: getRandomInitialEnergy() },
+      { name: 'Orbitador D', launchDateTime: getRandomLaunchDateTime(), orbitRadius: getRandomOrbitRadius(), angularSpeed: getRandomAngularSpeed(), initialEnergy: getRandomInitialEnergy() },
+    ];
+  
+    return missionData;
+  }
   
 }
 
-// Exemplos de dados de missão (com informações de foguetes)
-const missionData = [
-  { name: 'Satélite A', launchDateTime: '2023-10-30T17:19:56', orbitRadius: 100, angularSpeed: (2 * Math.PI) / 200, initialEnergy: 250 },
-  { name: 'Sonda B', launchDateTime: '2023-10-30T13:16:56', orbitRadius: 120, angularSpeed: (2 * Math.PI) / 150, initialEnergy: 120 },
-  { name: 'Rover C', launchDateTime: '2023-10-30T17:18:56', orbitRadius: 140, angularSpeed: (2 * Math.PI) / 100, initialEnergy: 180 },
-  { name: 'Orbitador D', launchDateTime: '2023-10-31T04:40:56', orbitRadius: 160, angularSpeed: (2 * Math.PI) / 250, initialEnergy: 260 },
-];
 
-
-
+  
 const coordinator = new SpaceMissionCoordinator();
-coordinator.planAndScheduleMissions(missionData);
+const missionDataRandom = coordinator.getRandomMissionData();
+  console.log(missionDataRandom);
+coordinator.planAndScheduleMissions(missionDataRandom);
 const result = coordinator.scheduleMissionsToMinimizeLateness(); // Chame a função de agendamento de missões para minimizar a latência
 console.log('Resultados da simulação:');
 console.log(result);
