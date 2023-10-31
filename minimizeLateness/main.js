@@ -33,12 +33,11 @@ class SpaceMissionCoordinator {
 
   // Função para calcular o atraso de uma missão
   calculateLateness(mission, currentTime) {
-    console.log("MISSION DO CALCULATE: " + JSON.stringify(mission))
     const missionLaunchTime =  new Date(mission.launchDateTime);
     const missionLateness = missionLaunchTime - currentTime;
-    console.log("Tempo da missão" + missionLaunchTime)
-    console.log("Tempo atual" + currentTime)
-    console.log("Atraso da missão" + missionLateness)
+    'console.log("TEMPO ATUAL" + currentTime)'
+    console.log("TEMPO DE INICIAL " + missionLaunchTime)
+    console.log("TEMPO DE LANÇAMENTO " + missionLateness)
     // Garantir que o atraso seja não negativo
     return missionLateness;
   }
@@ -64,6 +63,7 @@ class SpaceMissionCoordinator {
   
       // Calcular o atraso da missão usando a função calculateLateness
       const matchingMissionData = missionDataRandom.find((data) => data.name === mission.spacecraftName);
+      console.log("TEMPO AGORA: " + currentTime)
       const lateness = this.calculateLateness(
         {
           name: mission.name,
@@ -72,20 +72,15 @@ class SpaceMissionCoordinator {
         currentTime
       );
   
-      console.log(`Missão ${mission.name} - Atraso: ${lateness}`); // Adicione esta linha para depuração
+      console.log(`Missão ${matchingMissionData.name} - Atraso: ${lateness}`); // Adicione esta linha para depuração
   
-      // Verificar se há recursos disponíveis
       if (resourceManager.energy >= lateness) {
-        // Recursos disponíveis, missão realizada no tempo esperado
-        result.messages.push(`Missão ${mission.spacecraftName} realizada no tempo esperado`);
-      } else {
-        // Não há recursos suficientes, atrasar a missão
         result.messages.push(`Missão ${mission.spacecraftName} atrasada`);
+      } else {
+        result.messages.push(`Missão ${mission.spacecraftName} realizada no tempo esperado`);
+        // Não há recursos suficientes, atrasar a missão
+        
       }
-  
-      // Atualizar o tempo atual
-      currentTime = new Date(currentTime.getTime() + lateness);
-  
       // Adicionar o atraso ao total
       result.totalLateness += lateness;
     }
@@ -124,7 +119,6 @@ class SpaceMissionCoordinator {
   
 const coordinator = new SpaceMissionCoordinator();
 const missionDataRandom = coordinator.getRandomMissionData();
-  console.log(missionDataRandom);
 coordinator.planAndScheduleMissions(missionDataRandom);
 const result = coordinator.scheduleMissionsToMinimizeLateness(); // Chame a função de agendamento de missões para minimizar a latência
 console.log('Resultados da simulação:');
