@@ -117,5 +117,6 @@ const coordinator = new SpaceMissionCoordinator();
 const missionDataRandom = coordinator.getRandomMissionData();
 coordinator.planAndScheduleMissions(missionDataRandom);
 const result = coordinator.scheduleMissionsToMinimizeLateness(); // Chame a função de agendamento de missões para minimizar a latência
-console.log('Resultados da simulação:');
-console.log(result);
+console.log('\nResultados da simulação:\n');
+console.log(`Atraso total: ${result.totalLateness}\n\n${result.messages.join('\n')}`);
+
