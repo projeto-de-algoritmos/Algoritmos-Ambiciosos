@@ -35,10 +35,6 @@ class SpaceMissionCoordinator {
   calculateLateness(mission, currentTime) {
     const missionLaunchTime =  new Date(mission.launchDateTime);
     const missionLateness = missionLaunchTime - currentTime;
-    'console.log("TEMPO ATUAL" + currentTime)'
-    console.log("TEMPO DE INICIAL " + missionLaunchTime)
-    console.log("TEMPO DE LANÇAMENTO " + missionLateness)
-    // Garantir que o atraso seja não negativo
     return missionLateness;
   }
 
