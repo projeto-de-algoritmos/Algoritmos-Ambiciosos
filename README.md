@@ -68,5 +68,5 @@ Para utilização do projeo, rode-o no seu terminal.
 
   | Conteúdo | Vídeo                                                                                         |
   | -------- | --------------------------------------------------------------------------------------------- |
-  | Módulo 3 | [URL do vídeo]() |
+  | Módulo 3 | [URL do vídeo](https://unbbr.sharepoint.com/:v:/s/EuSozinho273/EQozfSBoO81MvR1xK6UdNrMBdpHP1MsAihMDrHKXUTZsHA?e=0beYwq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19) |
  
