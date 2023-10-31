@@ -1,50 +1,42 @@
 class LaunchPlanner {
-    constructor() {
-      this.scheduledLaunches = [];
+  constructor() {
+    this.scheduledLaunches = [];
+  }
+
+  // Função para agendar um lançamento de foguete com data e hora especificadas
+  scheduleLaunch(spacecraftName, launchDateTime) {
+    // Verificar se launchDateTime é uma string no formato ISO 8601 e convertê-la para um objeto Date
+    if (typeof launchDateTime === 'string') {
+      launchDateTime = new Date(launchDateTime);
     }
   
-    // Função para agendar um lançamento de foguete com data e hora aleatórias
-    scheduleLaunch(rocketName) {
-      const launchDate = new Date();
-      launchDate.setHours(Math.floor(Math.random() * 24)); // Hora aleatória
-      launchDate.setMinutes(Math.floor(Math.random() * 60)); // Minuto aleatório
-  
-      // Simulação de condições climáticas (chuva aleatória)
-      const isRainy = Math.random() < 0.3; // 30% de chance de chuva
-  
-      const launch = { rocketName, launchDate, isRainy };
-      this.scheduledLaunches.push(launch);
-  
-      console.log(`Lançamento do foguete ${rocketName} agendado para ${launchDate.toLocaleString()}`);
-      if (isRainy) {
-        console.log(`Atenção: Possibilidade de chuva no momento do lançamento.`);
-      }
+    // Verificar se launchDateTime é um objeto Date
+    if (!(launchDateTime instanceof Date)) {
+      throw new Error('A data de lançamento deve ser uma instância válida de Date.');
     }
   
-    // Função para listar todos os lançamentos agendados
-    listScheduledLaunches() {
-      console.log('\nLançamentos Agendados:');
-      this.scheduledLaunches.forEach((launch, index) => {
-        const conditions = launch.isRainy ? 'Possibilidade de chuva' : 'Condições ideais';
-        console.log(`${index + 1}. Foguete: ${launch.rocketName} - Data: ${launch.launchDate.toLocaleString()} - ${conditions}`);
-      });
+    // Simulação de condições climáticas (chuva aleatória)
+    const isRainy = Math.random() < 0.3; // 30% de chance de chuva
+  
+    const launch = { spacecraftName, launchDateTime, isRainy };
+    this.scheduledLaunches.push(launch);
+  
+    console.log(`Lançamento da espaçonave ${spacecraftName} agendado para ${launchDateTime.toLocaleString()}`);
+    if (isRainy) {
+      console.log(`Atenção: Possibilidade de chuva no momento do lançamento.`);
     }
   }
   
-  // Exemplo de uso da classe LaunchPlanner
-  const planner = new LaunchPlanner();
-  
-  planner.scheduleLaunch('Foguete Millennium Risonauta');
-  planner.scheduleLaunch('Foguete Comediante da Força');
-  planner.scheduleLaunch('Foguete Riso do Império');
-  planner.scheduleLaunch('Foguete C3-PO (Comediante de 3 Planetas Orbitais)');
-  planner.scheduleLaunch('Foguete Wookie Risonauta');
-  planner.scheduleLaunch('Foguete Sorriso Sith');
-  planner.scheduleLaunch('Foguete Rebelde Divertido');
-  planner.scheduleLaunch('Foguete Riso na Estrela da Morte');
-  planner.scheduleLaunch('Foguete Jedi da Comédia');
-  planner.scheduleLaunch('Foguete Humor na Galáxia');
-  
-  planner.listScheduledLaunches();
-  
-  module.exports = LaunchPlanner;
+
+  // Função para listar todos os lançamentos agendados
+  listScheduledLaunches() {
+    console.log('\nLançamentos Agendados:');
+    this.scheduledLaunches.forEach((launch, index) => {
+      const conditions = launch.isRainy ? 'Possibilidade de chuva' : 'Condições ideais';
+      console.log(`${index + 1}. Espaçonave: ${launch.spacecraftName} - Data: ${launch.launchDateTime.toLocaleString()} - ${conditions}`);
+    });
+    return this.scheduledLaunches;
+  }
+}
+
+module.exports = LaunchPlanner;

@@ -33,31 +33,13 @@ class OrbitScheduler {
       console.log(`Espaçonave ${spacecraft.name} - Coordenadas: (${x}, ${y})`);
     }
   }
-}
 
-// Exemplo de uso da classe OrbitScheduler
-const planetRadius = 100;
-const scheduler = new OrbitScheduler(planetRadius);
-
-// Agende órbitas com uma velocidade inicial (pode ser ajustada posteriormente)
-scheduler.scheduleOrbit('Satélite A', 100, (2 * Math.PI) / 200);
-scheduler.scheduleOrbit('Sonda B', 120, (2 * Math.PI) / 150);
-scheduler.scheduleOrbit('Rover C', 140, (2 * Math.PI) / 100);
-scheduler.scheduleOrbit('Orbitador D', 160, (2 * Math.PI) / 250);
-
-console.log('Simulação de Órbitas:');
-const simulationInterval = 100; // Intervalo de simulação em milissegundos
-let desiredDuration = 100; // Defina o tempo desejado para a simulação
-let elapsedTime = 0;
-
-// Execute a simulação até que o tempo limite seja alcançado
-const simulationTimer = setInterval(() => {
-  scheduler.simulateOrbits();
-  elapsedTime += simulationInterval;
-
-  if (elapsedTime >= desiredDuration) {
-    clearInterval(simulationTimer); // Pare a simulação após 10 segundos
+  // Adicione a função para acessar simulateOrbits diretamente
+  getScheduler() {
+    return {
+      simulateOrbits: this.simulateOrbits.bind(this),
+    };
   }
-}, simulationInterval);
+}
 
 module.exports = OrbitScheduler;
