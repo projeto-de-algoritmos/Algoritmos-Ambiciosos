@@ -1,64 +1,48 @@
 body {
-    background-image: url('./images/herculesCorona.jpg');
-    background-size: cover;
-    font-family: 'Orbitron', sans-serif;
-    display: grid;
-    padding-left: 10px;
-
-  }
-
-form {
-    display: grid;
-    align-items: center;
-}
-
-input {
-    font-family: 'Share Tech Mono', monospace;
-    width:fit-content;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    height: 30px;
-    text-align: center;
-}
-
-button {
-  background-image: url('./images/button.png');
+  background-image: url('./images/herculesCorona.jpg');
   background-size: cover;
-  background-color: transparent;
-  border-color: transparent;
-  margin-top: 20px;
-  width: 150px;
-  height: 80px;
-  text-align: center;
-  font-family: 'Share Tech Mono', monospace;
-  color: #fff;
-  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; /* Espaço entre os blocos */
+  height: 95vh; /* Ajuste a altura conforme necessário */
+
 }
 
-  h2, h3, label {
-    color: #fff;
+/* Estilo para os contêineres */
+.container {
+padding-top: 20px;
+padding-left: 20px;
+padding-right: 20px;
+background-color: transparent;
+}
+
+/* Estilo para os blocos */
+.block {
+background-color: #cbc8c8;
+border-radius: 25px;
+height: 95%;
+padding-top: 10px;
 }
 
 h1 {
-  color: #ffffff; 
-  text-align: center;
+color: rgb(14, 10, 64); 
+text-align: center;
 }
-div.resultsContainer{
-  background-color: black;
-}
-/* Estilo para os botões de retorno */
-a.button-return {
-  background-color: white; /* Cor de fundo branca */
-  color: black; /* Cor do texto preta */
-  padding: 10px 20px; /* Espaçamento interno do botão */
-  text-decoration: none; /* Remover sublinhado do link */
-  border: 1px solid black; /* Borda preta */
-  border-radius: 5px; /* Cantos arredondados */
-  display: inline-block;
+/* 
+#launchResourceData {
+background-color: black;
 }
 
-a.button-return:hover {
-  background-color: black; /* Cor de fundo preta ao passar o mouse */
-  color: white; /* Cor do texto branca ao passar o mouse */
+#trajectoryData {
+background-color: black;
 }
+
+#orbitData {
+background-color: black;
+}
+
+#mainData {
+background-color: black;
+} */

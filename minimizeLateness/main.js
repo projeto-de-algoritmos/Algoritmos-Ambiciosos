@@ -33,19 +33,15 @@ class SpaceMissionCoordinator {
 
   // Função para calcular o atraso de uma missão
   calculateLateness(mission, currentTime) {
-    // Converter currentTime para o formato ISO 8601
-    const currentTimeISO = currentTime.toISOString();
-    
-    // Converter launchDateTime para o formato ISO 8601
-    const missionLaunchTimeISO = new Date(mission.launchDateTime).toISOString();
-    
-    // Calcular o atraso
-    const missionLateness = new Date(missionLaunchTimeISO) - new Date(currentTimeISO);
-    
+    console.log("MISSION DO CALCULATE: " + JSON.stringify(mission))
+    const missionLaunchTime =  new Date(mission.launchDateTime);
+    const missionLateness = missionLaunchTime - currentTime;
+    console.log("Tempo da missão" + missionLaunchTime)
+    console.log("Tempo atual" + currentTime)
+    console.log("Atraso da missão" + missionLateness)
     // Garantir que o atraso seja não negativo
-    return Math.max(0, missionLateness);
+    return missionLateness;
   }
-  
 
   // Função para agendar missões com base no algoritmo "Scheduling to Minimize Lateness"
   scheduleMissionsToMinimizeLateness() {
@@ -58,6 +54,7 @@ class SpaceMissionCoordinator {
     const sortedMissions = this.missionTrajectories.slice().sort((a, b) => {
       return new Date(a.launchDateTime) - new Date(b.launchDateTime);
     });
+
   
     let currentTime = new Date(); // Iniciar no tempo atual
   
@@ -66,9 +63,16 @@ class SpaceMissionCoordinator {
       const resourceManager = this.resourceManagers.find((manager) => manager.name === mission.name);
   
       // Calcular o atraso da missão usando a função calculateLateness
-      const lateness = this.calculateLateness(mission, currentTime);
+      const matchingMissionData = missionData.find((data) => data.name === mission.spacecraftName);
+      const lateness = this.calculateLateness(
+        {
+          name: mission.name,
+          launchDateTime: matchingMissionData.launchDateTime
+        },
+        currentTime
+      );
   
-      console.log(`Missão ${mission.spacecraftName} - Atraso: ${lateness}`); // Adicione esta linha para depuração
+      console.log(`Missão ${mission.name} - Atraso: ${lateness}`); // Adicione esta linha para depuração
   
       // Verificar se há recursos disponíveis
       if (resourceManager.energy >= lateness) {
@@ -97,7 +101,6 @@ const missionData = [
   { name: 'Rover C', launchDateTime: '2023-10-30T17:18:56', orbitRadius: 140, angularSpeed: (2 * Math.PI) / 100, initialEnergy: 180 },
   { name: 'Orbitador D', launchDateTime: '2023-10-31T04:40:56', orbitRadius: 160, angularSpeed: (2 * Math.PI) / 250, initialEnergy: 260 },
 ];
-
 
 
 
