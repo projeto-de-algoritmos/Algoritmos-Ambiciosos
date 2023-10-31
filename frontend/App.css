@@ -3,20 +3,31 @@ body {
   background-size: cover;
   font-family: 'Orbitron', sans-serif;
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px; /* Espaço entre os blocos */
-  height: 95vh; /* Ajuste a altura conforme necessário */
 
 }
 
+.matrix{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; /* Espaço entre os blocos */
+  height: 70vh; /* Ajuste a altura conforme necessário */
+}
+
 /* Estilo para os contêineres */
-.container {
+.containerD {
 padding-top: 20px;
 padding-left: 20px;
 padding-right: 20px;
 background-color: transparent;
 }
+
+.containerM {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: transparent;
+  }
 
 /* Estilo para os blocos */
 .block {
@@ -27,8 +38,19 @@ padding-top: 10px;
 }
 
 h1 {
-color: rgb(14, 10, 64); 
+color: rgb(255, 255, 255); 
 text-align: center;
+}
+
+h2 {
+  color: rgb(14, 14, 58); 
+  text-align: center;
+  }
+
+.start {
+  width: 20%;
+  height: 300%;
+  margin-left: 38.5%;
 }
 /* 
 #launchResourceData {
